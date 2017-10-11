@@ -1,0 +1,14 @@
+{
+  "name": "dependancies-tree",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "author": "DirtyPP",
+  "license": "ISC",
+  "dependencies": {
+    "esprima": "^4.0.0"
+  }
+}
