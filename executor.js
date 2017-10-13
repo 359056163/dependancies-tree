@@ -32,10 +32,13 @@ function parseFile(filename) {
 }
 module.exports = {
     execute:(moduleName)=>{
-        let stack = [];
+        let stack = [],set = new Set();
+        let entryfile = require.resolve(moduleName);
         let root = {
-            filename:require.resolve(moduleName),
+            filename:entryfile,
         }
+
+        set.add(entryfile);
         stack.push(root);
 
         while(stack.length>0){
@@ -56,6 +59,7 @@ module.exports = {
                     let file = {
                         filename:filename,
                     };
+                    set.add(filename);
                     stack.push(file);
                     return file;
                 })
@@ -63,6 +67,6 @@ module.exports = {
                 target.dependancies = []
             }
         }
-        return root;
+        return {root,arr:Array.from(set)};
     }
 }

@@ -4,8 +4,7 @@ const executor = require("./executor");
 
 function isInstalled(name) {
     try {
-        require(name);
-        return true;
+        return !!require.resolve(name);
     }catch (e){
         return false;
     }
